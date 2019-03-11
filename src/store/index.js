@@ -1,13 +1,30 @@
-import React, { Component } from 'react';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
-class TodoListStore extends Component {
+
+class TodoListStore {
   @observable number = 0;
+  @observable list = "";
+  @observable todolist = [];
 
-  changeNumber(){
-    this.number ++;
+  @action handleChangeList(e){
+    this.list = e;
   }
 
+  @action addToDoList(e){
+    const todolist = this.todolist;
+    const _todoList = [...todolist];
+    _todoList.push(e);
+    this.todolist = _todoList;
+  }
+
+  @action delToDoList(index){
+    const todolist = this.todolist;
+    const _todoList = [...todolist];
+    _todoList.splice(index,1);
+    this.todolist = _todoList;
+  }
 }
 
-export default TodoListStore;
+const todoListStore = new TodoListStore();
+
+export default todoListStore;

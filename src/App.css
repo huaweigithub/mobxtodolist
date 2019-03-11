@@ -32,3 +32,7 @@
   }
 }
 
+.todolist-item{
+  width: 600px;
+  margin: 20px auto 0!important;
+}
