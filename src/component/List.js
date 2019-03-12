@@ -15,8 +15,14 @@ class ListApp extends Component {
 
   addList(){
     const {store} = this.props;
-    store.addToDoList(store.list);
-    store.handleChangeList("");
+    if(store.list == ""){
+      store.value_null = true
+    }
+    else{
+      store.addToDoList(store.list);
+      store.handleChangeList("");
+      store.value_null = false
+    }
   }
 
   handleChange(evt){
@@ -41,7 +47,7 @@ class ListApp extends Component {
               style={{ width: 600 }}
             >
               <Col xs={2} sm={4} md={6} lg={8} xl={12}>
-                <Input allowClear value={store.list} onChange={this.handleChange} />
+                <Input allowClear value={store.list} onChange={this.handleChange} className={ store.value_null ? "null_border" : ""} placeholder={ store.value_null ? "不能为空.." : '输入要添加的日程...'} />
               </Col>
               <Button type="primary" onClick={this.addList} >ADD LIST</Button>
             </Card>

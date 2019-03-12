@@ -4,6 +4,7 @@ import { observable, action } from 'mobx';
 class TodoListStore {
   @observable number = 0;
   @observable list = "";
+  @observable value_null= false;
   @observable todolist = [];
 
   @action handleChangeList(e){

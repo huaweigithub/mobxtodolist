@@ -36,3 +36,8 @@
   width: 600px;
   margin: 20px auto 0!important;
 }
+
+.null_border>input{
+  border: 1px solid #ff4d4f;
+  border-radius: 4px;
+}
